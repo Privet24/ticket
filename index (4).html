@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мій проїзний</title>
+    <style>
+        @font-face {
+            font-family: 'DniproCity';
+            src: url('DniproCity.woff2') format('woff2'),
+                 url('DniproCity.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        body {
+            font-family: 'DniproCity', Arial, sans-serif;
+            background-color: #edf7ff;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+        }
+		 .bottom-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #edf7ff;
+            padding: 10px 0;
+          
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 1000;
+        }
+        .bottom-bar .menu-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: black;
+            font-size: 14px;
+        }
+        .bottom-bar img {
+            width: 30px;
+            height: 30px;
+            margin-bottom: 5px;
+        }
+		.top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #edf7ff;
+            padding: 10px 20px;
+            font-size: 16px;
+           
+            color: #007BFF;
+            
+            z-index: 1000;
+            text-align: left;
+        }
+        .header {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 20px;
+           
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+		 .header2 {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 20px;
+           
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .header img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+        .button {
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+            margin-top: 15px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 50%;
+            margin-left: 0;
+        }
+        .button img {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 5px;
+        }
+          .ticket-card {
+            background: white;
+            padding: 1px 70px;
+            margin-top: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            position: relative;
+        }
+		.ticket-card img {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 53px;
+            height: 64px;
+        }
+        .ticket-card h3 {
+            margin: 0;
+            color: #333;
+        }
+		.ticket-card h6 {
+		word-spacing: 1px;
+		line-height:3px;
+		padding: 3px;
+            margin: 0;
+            font-weight:500;
+			
+        }
+		.ticket-card h4 {
+		text-align: center;
+		font-weight:500;
+		}
+		.ticket-card h2 {
+		margin-top: 1px;
+		text-align: center;
+		font-weight:600;
+		color:#344d90;
+		word-spacing: 1px;
+		line-height:2px;
+		}
+		.ticket-card h5 {
+		word-spacing: 1px;
+		text-align: center;
+		color:#737980;
+		font-weight:500;
+		}
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 5px;
+            margin-top: 10px;
+			grid-column-gap: 0px;
+        }
+        .icon-grid span {
+            display: block;
+            width: 25px;
+            height: 25px;
+            background-image: url(ico11.png);
+            border-radius: 4px;
+        }
+		  .timestamp {
+            font-size: 14px;
+            text-align: center;
+            color: #666;
+            margin-top: 5px;
+    </style>
+	<script type="text/javascript">
+function getDate()
+{
+temp_date = new Date();
+day = temp_date.getDate();
+month = temp_date.getMonth() + 1;
+year = temp_date.getFullYear();
+if (day < 10) {
+day = "0" + day;
+}
+if (month =3) {
+month = "берез.";
+}
+    var date = new Date();
+    var hours = date.getHours();
+    var minutes = date.getMinutes()-2;
+    var seconds = date.getSeconds();
+    //По надобности условие ниже повторить с minutes и hours
+	if(hours < 10)
+    {
+        hours = '0' + hours;
+    }
+    if(seconds < 10)
+    {
+        seconds = '0' + seconds;
+    }
+	if(minutes < 10)
+    {
+        minutes = '0' + minutes;
+    }
+    document.getElementById('timedisplay').innerHTML = day + ' ' + month + ' ' + year + ' р. | ' + hours + ':' + minutes ;
+}
+setInterval(getDate, 0);
+</script>
+	 <script>
+        function startCountdown() {
+            let time = 60 * 60;
+            const countdownElement = document.getElementById("countdown");
+            function updateCountdown() {
+                const minutes = Math.floor(time / 60);
+                const seconds = time % 60;
+                countdownElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                if (time > 0) {
+                    time--;
+                    setTimeout(updateCountdown, 1000);
+                }
+            }
+            updateCountdown();
+        }
+		 function submitValue() {
+            const inputField = document.getElementById("userInput");
+            const value = inputField.value;
+            if (value) {
+                document.getElementById("submittedValue").textContent = value;
+                document.getElementById("inputContainer").style.display = "none";
+            }
+        }
+        window.onload = startCountdown;
+    </script>
+</head>
+<body>
+<div class="top-bar"><b>← Головна</b> </div><br><br>
+    <div class="container">
+        <div class="header">
+            <img src="ico2.png" alt="Трамвай">
+            Мій проїзний
+        </div>
+        <div class="button">
+            <img src="ico2.png" alt="Календар">
+            <span>Придбати проїзний</span>
+        </div>
+        
+        <div class="ticket-card">
+            <img src="ico3.png" alt="Трамвай">
+            <h6><p>Дніпро</p>
+            <p>КП Дніпровський </p>
+			<p>електротранспорт ДМР</p>
+			<p>Серія ААА055987</p>
+			<p>Код TR01156</p></h6>
+            
+			<h4><div class="countdown" id="countdown"><h4>60:00</div></h4>
+          
+            <div class="icon-grid">
+                <!-- 20 иконок автобуса -->
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span>
+            </div>
+			
+			<h5><div id="timedisplay"></div></h5>
+			<p style=line-height:3px;><h5>Бортовий номер</h5><h2><p id="submittedValue"></p></h2></p>
+			
+            <h4>Вартість | 10 UAH</h4>
+			
+			 
+            <div class="input-container" id="inputContainer">
+                <input type="number" id="userInput" placeholder="Введіть число">
+                <button onclick="submitValue()">Відправити</button>
+            </div>
+        </div>
+		  <div class="header2">
+		<img style=  height=50% width=60% src="ico13.png"  alt="Гугл"></div>
+    </div><br><br><br><br>
+	
+	<div class="bottom-bar">
+        <div class="menu-item">
+            <img src="ico6.png" alt="Меню">
+            <span>Головна</span>
+        </div>
+        <div class="menu-item">
+            <img src="ico7.png" alt="Меню">
+            <span>Сервіси</span>
+        </div>
+        <div class="menu-item">
+            <img src="ico8.png" alt="Меню">
+            <span>Документи</span>
+        </div>
+        <div class="menu-item">
+            <img src="ico9.png" alt="Меню">
+            <span>Акаунт</span>
+        </div>
+    </div>
+</body>
+</html>
