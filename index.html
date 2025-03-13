@@ -248,10 +248,15 @@ month = "груд.";
     {
         seconds = '0' + seconds;
     }
+		if(minutes < 2)
+    {
+        minutes = minutes+2;
+    }
 	if(minutes < 10)
     {
         minutes = '0' + minutes;
     }
+	
     document.getElementById('timedisplay').innerHTML = day + ' ' + month + ' ' + year + ' р. | ' + hours + ':' + minutes ;
 }
 setInterval(getDate, 0);
