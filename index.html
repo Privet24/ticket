@@ -22,6 +22,17 @@
             max-width: 400px;
             margin: auto;
         }
+		a {
+  outline: none;
+  text-decoration: none;
+  padding: 2px 1px 0;
+  color: black;
+}
+
+		 .cont {
+            display: flex;
+			flex-direction: row;
+        }
 		 .bottom-bar {
             position: fixed;
             bottom: 0;
@@ -95,15 +106,17 @@
             padding: 10px;
             border-radius: 10px;
             margin-top: 15px;
-            font-size: 16px;
+            font-size: 12px;
             cursor: pointer;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: 50%;
-            margin-left: 0;
+            width: 45%;
+            margin-left: 5px;
+			margin-right: 5px;
+			height:70px;
         }
         .button img {
             width: 40px;
@@ -273,13 +286,30 @@ setInterval(getDate, 0);
 <div class="top-bar"><b>← Головна</b> </div><br><br>
     <div class="container">
         <div class="header">
-            <img src="ico2.png" alt="Трамвай">
-            Мій проїзний
+            <img src="ico1.png" alt="Трамвай">
+            Транспорт
         </div>
-        <div class="button">
+        
+		 <div class="cont">
+		 <div class="button">
+            <img src="ico14.png" alt="Архів">
+            <span>QR сканер</span>
+        </div>
+		<div class="button">
+            <img src="ico15.png" alt="Календар">
+            <span>Архів квитків</span>
+        </div>
+		</div> <div class="cont">
+		  <a href="http://privet24.github.io/abonement" class="button">
+		 
             <img src="ico2.png" alt="Календар">
-            <span>Придбати проїзний</span>
+            <span>Мій проїзний</span>
+        </a>
+		<div class="button">
+            <img src="ico15.png" alt="Календар">
+            <span>Мої штрафи</span>
         </div>
+		</div>
         
         <div class="ticket-card">
             <img src="ico3.png" alt="Трамвай">
@@ -310,8 +340,9 @@ setInterval(getDate, 0);
                 <button onclick="submitValue()">Відправити</button>
             </div>
         </div>
-		  <div class="header2">
-		<img style=  height=50% width=60% src="ico13.png"  alt="Гугл"></div>
+		 <a href="http://privet24.github.io" class="header2">
+		  
+		<img style=  height=50% width=60% src="ico13.png"  alt="Гугл"></a>
     </div><br><br><br><br>
 	
 	<div class="bottom-bar">
