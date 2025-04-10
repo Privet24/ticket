@@ -289,6 +289,7 @@ setInterval(getDate, 0);
         }
         window.onload = startCountdown;
     </script>
+	   
 </head>
 <body>
 <div class="top-bar"><b>← Головна</b> </div><br><br>
@@ -327,7 +328,8 @@ setInterval(getDate, 0);
 			<p>Серія ААА055987</p>
 			<p>Код TR01156</p></h6>
             
-			<h3><div class="countdown" id="countdown">60:00</div></h3>
+			<h3><div class="countdown" id="timer">60:00</div></h3>
+			
           
             <div class="icon-grid">
                 <!-- 20 иконок автобуса -->
@@ -345,7 +347,7 @@ setInterval(getDate, 0);
 			 
            <div class="input-container" id="inputContainer">
                 <input type="number" id="userInput" placeholder="Введіть число">
-                <button onclick="submitValue()">Відправити</button>
+                <button onclick="submitValue(),resetTimer()">Відправити</button>
             </div>
         </div>
 		 <a href="http://privet24.github.io" class="header2">
@@ -371,5 +373,39 @@ setInterval(getDate, 0);
             <span>Акаунт</span>
         </div>
     </div>
+	 <script>
+        const totalSeconds = 60 * 60; // 60:00 в секундах
+        const timerElement = document.getElementById('timer');
+
+        let startTime = localStorage.getItem('transportTimerStart');
+        if (!startTime) {
+            startTime = Date.now();
+            localStorage.setItem('transportTimerStart', startTime);
+        }
+
+        function updateTimer() {
+            const now = Date.now();
+            const elapsed = Math.floor((now - startTime) / 1000);
+            const remaining = Math.max(0, totalSeconds - elapsed);
+
+            const minutes = Math.floor(remaining / 60);
+            const seconds = remaining % 60;
+
+            timerElement.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+
+            if (remaining > 0) {
+                requestAnimationFrame(updateTimer);
+            } else {
+                localStorage.removeItem('transportTimerStart');
+            }
+        }
+
+        function resetTimer() {
+            startTime = Date.now();
+            localStorage.setItem('transportTimerStart', startTime);
+        }
+
+        updateTimer();
+    </script>
 </body>
 </html>
