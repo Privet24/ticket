@@ -139,9 +139,11 @@
             width: 53px;
             height: 64px;
         }
+		 
         .ticket-card h3 {
-            margin: 0;
-            color: #333;
+		font-size: 21px;
+           text-align: center;
+		font-weight:600;
         }
 		.ticket-card h6 {
 		word-spacing: 1px;
@@ -153,7 +155,7 @@
         }
 		.ticket-card h4 {
 		text-align: center;
-		font-weight:500;
+		font-weight:600;
 		}
 		.ticket-card h2 {
 		margin-top: 1px;
@@ -162,6 +164,7 @@
 		color:#344d90;
 		word-spacing: 1px;
 		line-height:2px;
+		font-size: 33px;
 		}
 		.ticket-card h5 {
 		word-spacing: 1px;
@@ -324,7 +327,7 @@ setInterval(getDate, 0);
 			<p>Серія ААА055987</p>
 			<p>Код TR01156</p></h6>
             
-			<h4><div class="countdown" id="countdown"><h4>60:00</div></h4>
+			<h3><div class="countdown" id="countdown">60:00</div></h3>
           
             <div class="icon-grid">
                 <!-- 20 иконок автобуса -->
@@ -340,7 +343,7 @@ setInterval(getDate, 0);
             <h4>Вартість | 10 UAH</h4>
 			
 			 
-            <div class="input-container" id="inputContainer">
+           <div class="input-container" id="inputContainer">
                 <input type="number" id="userInput" placeholder="Введіть число">
                 <button onclick="submitValue()">Відправити</button>
             </div>
