@@ -166,6 +166,11 @@
 		line-height:2px;
 		font-size: 33px;
 		}
+	
+.profi_item_left, .profi_item_right {
+  display: inline-block;
+  
+}
 		.ticket-card h5 {
 		word-spacing: 1px;
 		text-align: center;
@@ -260,7 +265,7 @@ month = "груд.";
         minutes = '0' + minutes;
     }
 	
-    document.getElementById('timedisplay').innerHTML = day + ' ' + month + ' ' + year + ' р. | ' + hours + ':' + minutes ;
+    document.getElementById('timedisplay').innerHTML = day + ' ' + month + ' ' + year + ' р. |   '+ ' ' ;
 }
 setInterval(getDate, 0);
 </script>
@@ -339,7 +344,7 @@ setInterval(getDate, 0);
                 <span></span><span></span><span></span><span></span><span></span>
             </div>
 			
-			<h5><div id="timedisplay"></div></h5>
+			<h5><div class = "profi_item_left" id="timedisplay"></div> <div class = "profi_item_right" id="lastResetTime"></div></h5>
 			<p style=line-height:3px;><h5>Бортовий номер</h5><h2><p id="submittedValue"></p></h2></p>
 			
             <h4>Вартість | 10 UAH</h4>
@@ -373,9 +378,10 @@ setInterval(getDate, 0);
             <span>Акаунт</span>
         </div>
     </div>
-	 <script>
+	<script>
         const totalSeconds = 60 * 60; // 60:00 в секундах
         const timerElement = document.getElementById('timer');
+        const lastResetTimeElement = document.getElementById('lastResetTime');
 
         let startTime = localStorage.getItem('transportTimerStart');
         if (!startTime) {
@@ -403,6 +409,11 @@ setInterval(getDate, 0);
         function resetTimer() {
             startTime = Date.now();
             localStorage.setItem('transportTimerStart', startTime);
+
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            lastResetTimeElement.textContent = `  ` +`  ${hours}:${minutes}`;
         }
 
         updateTimer();
